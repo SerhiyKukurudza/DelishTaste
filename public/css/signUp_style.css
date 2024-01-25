@@ -18,6 +18,15 @@
   background-repeat: no-repeat;
 }
 
+.shade {
+  width: 50%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .emptySpace {
   flex: 1;
   background-color: white;
@@ -66,25 +75,20 @@
 }
 
 .textTop,
-.textMiddle,
-.textBottom {
+.textMiddle {
   position: absolute; /* Permite posicionar os elementos relativamente à .containerTest */
   color: white; /* Ajuste a cor do texto conforme necessário para melhor contraste */
+  font-weight: bold;
 }
 
 .textTop {
   font-size: 60px;
   max-width: 500px;
-  margin: 90px 0px 0px 60px;
+  margin: 200px 0px 0px 60px;
 }
 
 .textMiddle {
   font-size: 20px;
   max-width: 600px;
-  margin: 325px 0px 0px 60px;
-}
-
-.textBottom {
-  font-size: 20px;
-  margin: 400px 0px 0px 60px;
+  margin: 370px 0px 0px 65px;
 }
