@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.register = (req, res) => {
+exports.signUp = (req, res) => {
   console.log(req.body);
 
   const { name, email, password, passwordConfirm } = req.body;
@@ -72,11 +72,11 @@ exports.register = (req, res) => {
       }
 
       if (results.length > 0) {
-        return res.render("register", {
+        return res.render("signUp", {
           message: "That email is already in use",
         });
       } else if (password !== passwordConfirm) {
-        return res.render("register", {
+        return res.render("signUp", {
           message: "Passwords do not match",
         });
       }
@@ -92,7 +92,7 @@ exports.register = (req, res) => {
             console.log("Error:".red, colors.red(error));
           } else {
             console.log(results);
-            return res.render("register", {
+            return res.render("signUp", {
               message: "User registered",
             });
           }

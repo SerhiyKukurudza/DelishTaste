@@ -10,8 +10,8 @@ router.get("/", authController.isLoggedIn, (req, res) => {
   res.render("index", { user });
 });
 
-router.get("/register", (req, res) => {
-  res.render("register");
+router.get("/signUp", (req, res) => {
+  res.render("signUp");
 });
 
 router.get("/login", (req, res) => {
