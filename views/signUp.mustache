@@ -69,6 +69,8 @@
                 name="passwordConfirm"
                 placeholder="Confirm Password"
               />
+              <br>
+              <input type="checkbox" onclick="showPass()"> Show Passwords
             </div>
             <button type="submit">Register User</button>
           </form>
@@ -85,5 +87,19 @@
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      function showPass() {
+        var password = document.getElementById("password");
+        var passwordConfirm = document.getElementById("passwordConfirm");
+        if (password.type && passwordConfirm.type === "password") {
+          password.type = "text";
+          passwordConfirm.type = "text";
+        } else {
+          password.type = "password";
+          passwordConfirm.type = "password";
+        }
+      }
+  </script>
   </body>
 </html>

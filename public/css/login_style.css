@@ -44,6 +44,13 @@
     border-radius: 20px;
 }
 
+.container input[type="checkbox"] {
+  text-align: center;
+  height: 15px;
+  width: 15px;
+  border-radius: 2px;
+}
+
 .container button {
     background-color: #E97D3F;
     padding: 7px 30px;
