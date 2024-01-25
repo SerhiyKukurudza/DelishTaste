@@ -1,0 +1,84 @@
+.logo {
+  width: 200px;
+  height: 200px;
+}
+
+.containerTest {
+  height: 100vh; /* 100% da altura da viewport */
+  width: 100%; /* 100% da largura da viewport */
+  display: flex;
+}
+
+.loginImg {
+  flex: 1;
+  height: 100%;
+  background-image: url("../images/loginImg.jpg");
+  background-size: cover;
+  background-position: 80% center;
+  background-repeat: no-repeat;
+}
+
+.emptySpace {
+  flex: 1;
+  background-color: white;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.container {
+  background-color: rgb(255, 255, 255);
+  height: 600px;
+  width: 500px;
+  display: flex;
+  flex-direction: column; /* Alinha os itens na vertical */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center;
+}
+
+.container input {
+    text-align: center;
+    height: 45px;
+    width: 400px;
+    border-radius: 20px;
+}
+
+.container button {
+    background-color: #E97D3F;
+    padding: 7px 30px;
+    border-radius: 60px;
+    color: white;
+    border: none;
+}
+
+.container button:hover {
+    background-color: #ed600f;
+    color: white;
+    text-decoration: none;
+}
+
+
+.textTop,
+.textMiddle,
+.textBottom {
+  position: absolute; /* Permite posicionar os elementos relativamente à .containerTest */
+  color: white; /* Ajuste a cor do texto conforme necessário para melhor contraste */
+}
+
+.textTop {
+  font-size: 60px;
+  max-width: 500px;
+  margin: 90px 0px 0px 60px;
+}
+
+.textMiddle {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 325px 0px 0px 60px;
+}
+
+.textBottom {
+  font-size: 20px;
+  margin: 400px 0px 0px 60px;
+}

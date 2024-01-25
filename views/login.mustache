@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/login_style.css" />
+  </head>
+
+  <body>
+    <div class="containerTest">
+      <div class="emptySpace">
+        <div class="container">
+          <img class="logo" src="/images/mainLogo.png" />
+
+          <form action="/auth/login" method="POST">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter Email Address"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+              />
+            </div>
+
+            <button type="submit">Login</button>
+          </form>
+          {{#message}}
+          <h4 class="alert alert-danger mt-4">{{ message }}</h4>
+          {{/message}}
+        </div>
+      </div>
+
+      <div class="loginImg">
+        <h1 class="textTop">Choose from thousands of recipes</h1>
+        <p class="textMiddle">
+          Appropriately integrate technically sound value with scalable
+          infomediaries negotiate sustainable strategic theme areas
+        </p>
+        <a class="textBottom" href="/register">Sign up today</a>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
