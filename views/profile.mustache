@@ -12,12 +12,12 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"
       />
-      <link rel="stylesheet" href="/css/style.css" />
+      <link rel="stylesheet" href="/css/profile_style.css" />
     </head>
 
     <body>
       <nav>
-        <h4>Node MySQL</h4>
+        <img class="logo" src="/images/mainLogo.png" />
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/profile">Profile</a></li>
@@ -31,18 +31,14 @@
             <div class="card">
               <div class="avatar-ctn">
                 <img
-                  src="/avatar.png"
+                  src="/images/avatar.png"
                   class="avatar"
                   alt="user profile picture"
                 />
               </div>
               <div class="card-body">
-                <h5 class="card-title">{{ user.name }}</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">{{ user.email }}</a>
+                <h6 class="card-title">Username: {{ user.name }}</h6>
+                <h6 class="card-title">Email: {{ user.email }}</h6>
               </div>
             </div>
           </div>
@@ -53,12 +49,73 @@
               <div class="card-body">
                 <h5 class="card-title">Hey {{ user.name }} welcome back</h5>
                 <p class="card-text">
-                  This is your profile page where you can add all the
+                  This is your profile page where you can edit
                   information about yourself
                 </p>
-                <a href="#" class="btn btn-primary">Go Somewhere</a>
+                  <div id="editForm">
+                    <form>
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          name="name"
+                          placeholder="Enter name"
+                          value="{{user.name}}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          name="email"
+                          placeholder="Enter Email Address"
+                          value="{{user.email}}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="currentPassword"
+                          name="currentPassword"
+                          placeholder="Enter Password"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="password">New Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="password"
+                          name="password"
+                          placeholder="Enter Password"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="passwordConfirm">Confirm Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="passwordConfirm"
+                          name="passwordConfirm"
+                          placeholder="Confirm Password"
+                        />
+                        <br>
+                        <input type="checkbox" onclick="showPass()"> Show Passwords
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    {{#message}}
+                    <h4 class="alert alert-danger mt-4">{{ message }}</h4>
+                    {{/message}}
+                  </div>
+                <button onclick="showEditForm()"  id="editBtn" class="btn btn-primary">Edit Information</button>
               </div>
-              <div class="card-footer text-muted">Node MySQL - Project</div>
             </div>
           </div>
         </div>
@@ -69,6 +126,32 @@
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"
       ></script>
+
+      <script>
+        function showPass() {
+          var currentPassword = document.getElementById("currentPassword");
+          var password = document.getElementById("password");
+          var passwordConfirm = document.getElementById("passwordConfirm");
+          if (currentPassword.type && password.type && passwordConfirm.type === "password") {
+            currentPassword.type = "text";
+            password.type = "text";
+            passwordConfirm.type = "text";
+          } else {
+            currentPassword.type = "password";
+            password.type = "password";
+            passwordConfirm.type = "password";
+          }
+        }
+
+        function showEditForm () {
+          var divEditForm = document.getElementById("editForm");
+          var editBtn = document.getElementById("editBtn");
+          divEditForm.style.display = 'block';
+          editBtn.style.display = 'none';
+        }
+
+      </script>
+
     </body>
   </html>
 </html>
