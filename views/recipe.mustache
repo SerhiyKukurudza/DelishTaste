@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{recipe.title}}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/recipe_style.css" />
+</head>
+
+<body>
+  <nav>
+    <img class="logo" src="/images/mainLogo.png" />
+    <ul>
+      <li><a href="/">Home</a></li>
+      {{#user}}
+      <li><a href="/profile">Profile</a></li>
+      {{#isAdmin}}
+      <li><a href="/backEnd">BackEnd</a></li>
+      {{/isAdmin}}
+      <li><a href="/auth/checkData">Check data user</a></li>
+      <li><a href="/auth/logout">Logout</a></li>
+      {{/user}}
+      {{^user}}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/auth/checkData">Check data user</a></li>
+      <li><a href="/signUp">Sign Up</a></li>
+      {{/user}}
+    </ul>
+  </nav>
+
+ <div class="recipe-container">
+  <h2 class="recipe-name">{{recipe.title}}</h2>
+  <p class="recipe-ingredients">Ingredients: {{recipe.ingredients}}</p>
+  <p class="recipe-preparation">Preparation: {{recipe.preparation}}</p>
+  <p class="recipe-category">Category: {{recipe.category}}</p>
+  <p class="recipe-time">Time: {{recipe.time}} minutes</p>
+  <p class="recipe-price">Price: ${{recipe.price}}</p>
+  <p class="recipe-difficulty">Difficulty: {{recipe.difficulty}}</p>
+  <p class="recipe-author">Author: {{recipe.author}}</p>
+  <img class="recipe-image" src="{{recipe.image}}" alt="{{recipe.title}}" />
+</div>
+
+
+
+</body>
+
+</html>
+

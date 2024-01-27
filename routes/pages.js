@@ -32,12 +32,30 @@ router.get("/profile", authController.isLoggedIn, (req, res) => {
   }
 });
 
-router.get("/", authController.isLoggedIn, (req, res) => {
+router.get("/api/recipes/:id", authController.isLoggedIn, (req, res) => {
   const user = req.user ? true : false;
+  const isAdmin = (user && req.user.role === 1);
 
-  // Renderiza o modelo mustache com os dados das receitas
-  res.render("index", { user });
+  const idRecipe = req.params.id;
+  const sql = "SELECT * FROM recipe WHERE id=?";
+
+  // Execute a consulta
+  connectionDataBase.query(sql, [idRecipe], (err, recipe) => {
+    if (err) {
+      console.error("Erro na consulta SQL:", err);
+      res.status(500).json({ error: "Erro ao buscar receitas na base de dados" });
+      return;
+    }
+
+    // Renderiza a página recipe.mustache com os dados da receita
+    res.render("recipe", { recipe: recipe[0], user, isAdmin }); // Assume que apenas uma receita será retornada
+
+    // Se você precisar lidar com vários resultados, ajuste conforme necessário
+  });
 });
+
+
+
 
 router.get("/api/recipes", (req, res) => {
   // Consulta SQL para selecionar todas as receitas da tabela 'recipe'
@@ -50,7 +68,6 @@ router.get("/api/recipes", (req, res) => {
       res.status(500).json({ error: "Erro ao buscar receitas na base de dados" });
       return;
     }
-
     // Se a consulta for bem-sucedida, envie as receitas como resposta
     res.json(recipes);
   });

@@ -1,0 +1,90 @@
+nav{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    list-style: none;
+    padding: 10px;
+}
+
+nav li a{
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+nav li:not(:last-child) a:hover{
+    color: #E97D3F;
+    text-decoration: none;
+}
+
+nav li:last-child a{
+    background-color: #E97D3F;
+    padding: 15px 30px;
+    border-radius: 60px;
+    color: white;
+}
+
+nav li:last-child a:hover{
+    background-color: #ed600f;
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+}
+
+
+
+.recipe-container {
+  background: #fff; /* Fundo branco para o recipiente */
+  border-radius: 20px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 20px; /* Espaçamento interno para o recipiente */
+}
+
+.recipe-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.recipe-ingredients,
+.recipe-preparation,
+.recipe-category,
+.recipe-time,
+.recipe-price,
+.recipe-difficulty,
+.recipe-author {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.recipe-image {
+  width: 50%;
+  height: 50%;
+  border-radius: 10px;
+  margin-top: 20px;
+image-rendering: optimizeQuality;
+}
