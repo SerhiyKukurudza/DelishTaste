@@ -8,6 +8,8 @@ const { promisify } = require("util");
 
 colors.enable();
 
+let userBundle;
+
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -114,15 +116,19 @@ exports.isLoggedIn = async (req, res, next) => {
           process.env.JWT_SECRET
         );
 
-        console.log("É INFO DO DECODED:" + " " + decoded);
+        //console.log("É INFO DO DECODED:" + " " + decoded);
 
         //2) Check if the user still exists
         connectionDataBase.query(
           "SELECT * FROM users WHERE id = ?",
           [decoded.id],
           (error, result) => {
-            console.log("Result from the database query:");
-            console.log(result);
+            //console.log("Result from the database query:");
+            //console.log(result);
+
+            userBundle = JSON.stringify(result, null, 2);
+
+            //console.log(userBundle);
 
             if (!Array.isArray(result) || result.length === 0) {
               console.log("User not found in the database");
@@ -130,8 +136,8 @@ exports.isLoggedIn = async (req, res, next) => {
             }
 
             req.user = result[0];
-            console.log("user is");
-            console.log(req.user);
+            //console.log("user is");
+            //console.log(req.user);
             return next();
           }
         );
@@ -150,11 +156,25 @@ exports.isLoggedIn = async (req, res, next) => {
   }
 };
 
+
+
 exports.logout = async (req, res) => {
   res.cookie("jwt", "logout", {
     expires: new Date(Date.now() + 2 * 1000),
     httpOnly: true,
   });
 
+  userBundle = null;
+
   res.status(200).redirect("/");
 };
+
+
+
+exports.checkData = (req, res) => {
+  
+  console.log(userBundle);
+
+  res.status(200).redirect("/");
+};
+
