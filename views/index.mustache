@@ -1,69 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <html>
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Home Page</title>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous"
-      />
-      <link rel="stylesheet" href="/css/index_style.css" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/index_style.css" />
+  </head>
 
-    <body>
-      <nav>
-        <img class="logo" src="/images/mainLogo.png" />
-        <ul>
-          <li><a href="/">Home</a></li>
-          {{#user}}
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/auth/checkData">Check data user</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
-          {{/user}}
-          {{^user}}
-          <li><a href="/login">Login</a></li>
-          <li><a href="/auth/checkData">Check data user</a></li>
-          <li><a href="/signUp">Sign Up</a></li>
-          {{/user}}
-        </ul>
-      </nav>
+  <body>
+    <nav>
+      <img class="logo" src="/images/mainLogo.png" />
+      <ul>
+        <li><a href="/">Home</a></li>
+        {{#user}}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/auth/checkData">Check data user</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+        {{/user}}
+        {{^user}}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/auth/checkData">Check data user</a></li>
+        <li><a href="/signUp">Sign Up</a></li>
+        {{/user}}
+      </ul>
+    </nav>
 
-      <div class="homeImg">
-        <h1 class="textTop">Choose from thousands of recipes</h1>
-        <p class="textMiddle">
-          Appropriately integrate technically sound value with scalable
-          infomediaries negotiate sustainable strategic theme areas
-        </p>
-        <a class="textBottom" href="/register">Sign up today</a>
-      </div>
-        <div class="container mt-4">
-          <!-- Recipe Section -->
-          <div class="jumbotron">
-            <h1 class="display-4">Discover Delicious Recipes</h1>
-            <p class="lead">
-              Explore a variety of mouth-watering recipes from our collection.
-            </p>
-            <hr class="my-4" />
-            <p>
-              Whether you're a cooking enthusiast or a beginner, our recipes cater to all tastes and skill levels.
-            </p>
-            <p class="lead">
-              <a class="btn btn-primary btn-lg" href="/recipes" role="button">Explore Recipes</a>
-            </p>
+    <div class="homeImg">
+      <h1 class="textTop">Choose from thousands of recipes</h1>
+      <p class="textMiddle">
+        Appropriately integrate technically sound value with scalable
+        infomediaries negotiate sustainable strategic theme areas
+      </p>
+      <a class="textBottom" href="/register">Sign up today</a>
+    </div>
+    <div class="container mt-4">
+      <!-- Recipe Section -->
+      <div class="jumbotron" id="recipeJumbotron">
+        <div class="card" id="recipeCard">
+          <div class="card-body">
+            <!-- Os dados serão preenchidos aqui -->
           </div>
-          <!-- End Recipe Section -->
         </div>
+      </div>
+      <!-- End Recipe Section -->
+    </div>
 
-      <script
-        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"
-      ></script>
-    </body>
-  </html>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOM fully loaded. Fetching recipes...');
+
+        fetch("/api/recipes") // Substitua pela sua rota real
+          .then(response => response.json())
+          .then(data => {
+            const recipes = data;
+            const recipeCard = document.getElementById('recipeCard');
+            const cardBody = recipeCard.querySelector('.card-body');
+
+            if (recipes && recipes.length > 0) {
+              // Exemplo: Acesse o título da primeira receita
+              alert(recipes[0].title);
+              console.log(recipes);
+              console.log('Recipes available. Displaying...');
+
+              // Renderizar os dados no HTML
+              cardBody.innerHTML = `
+                <h5 class="card-title">${recipes[0].title}</h5>
+                <p class="card-text">Author: ${recipes[0].author}</p>
+              `;
+            } else {
+              console.log('No recipes available.');
+              cardBody.innerHTML = '<h5 class="card-title">No recipes available</h5>';
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching recipes:', error);
+          });
+      });
+    </script>
+  </body>
 </html>

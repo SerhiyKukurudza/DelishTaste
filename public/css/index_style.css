@@ -89,3 +89,7 @@ nav li:last-child a:hover{
     padding: 4rem 2rem;
     background-color: white;
 }
+
+.card{
+    width: 200px;
+}
