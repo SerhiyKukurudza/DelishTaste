@@ -21,7 +21,7 @@ exports.login = async (req, res) => {
     }
 
     connectionDataBase.query(
-      "SELECT * FROM users WHERE email = ?",
+      "SELECT * FROM user WHERE email = ?",
       [email],
       async (error, results) => {
         console.log(results);
@@ -66,7 +66,7 @@ exports.signUp = (req, res) => {
   const { name, email, password, passwordConfirm } = req.body;
 
   connectionDataBase.query(
-    "SELECT email FROM users WHERE email = ?",
+    "SELECT email FROM user WHERE email = ?",
     [email],
     async (error, results) => {
       if (error) {
@@ -87,7 +87,7 @@ exports.signUp = (req, res) => {
       console.log(hashedPassword);
 
       connectionDataBase.query(
-        "INSERT INTO users SET ?",
+        "INSERT INTO user SET ?",
         { name: name, email: email, password: hashedPassword },
         (error, results) => {
           if (error) {
@@ -120,7 +120,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
         //2) Check if the user still exists
         connectionDataBase.query(
-          "SELECT * FROM users WHERE id = ?",
+          "SELECT * FROM user WHERE id = ?",
           [decoded.id],
           (error, result) => {
             //console.log("Result from the database query:");
