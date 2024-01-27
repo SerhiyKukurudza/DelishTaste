@@ -11,6 +11,17 @@ app.listen(port, () => {
   console.log(`Servidor iniciado em http://localhost:${port}`.blue);
 });
 
+
+
+
+
+
+
+
+
+
+
+
 /*
 // View com a lista de alunos proveniente da base de dados
 app.get('/users', (req, res) => {

@@ -1,0 +1,91 @@
+nav{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    list-style: none;
+    padding: 10px;
+}
+
+nav li a{
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+nav li:not(:last-child) a:hover{
+    color: #E97D3F;
+    text-decoration: none;
+}
+
+nav li:last-child a{
+    background-color: #E97D3F;
+    padding: 15px 30px;
+    border-radius: 60px;
+    color: white;
+}
+
+nav li:last-child a:hover{
+    background-color: #ed600f;
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+}
+
+.homeImg {
+    position: relative; /* Torna a .containerTest um contexto de posicionamento para os elementos filhos */
+    width: 1200px;
+    height: 500px;
+    background: red;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    border-radius: 50px;
+}
+
+.textTop,
+.textMiddle,
+.textBottom {
+    position: absolute; /* Permite posicionar os elementos relativamente à .containerTest */
+    color: white; /* Ajuste a cor do texto conforme necessário para melhor contraste */
+}
+
+.textTop {
+    font-size: 60px;
+    max-width: 500px;
+    margin: 90px 0px 0px 60px;
+}
+
+.textMiddle {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 325px 0px 0px 60px;
+}
+
+.textBottom {
+    font-size: 20px;
+    margin: 400px 0px 0px 60px;
+}
+
+.jumbotron {
+    padding: 4rem 2rem;
+    background-color: white;
+}
