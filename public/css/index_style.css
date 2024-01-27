@@ -84,3 +84,8 @@ nav li:last-child a:hover{
     font-size: 20px;
     margin: 400px 0px 0px 60px;
 }
+
+.jumbotron {
+    padding: 4rem 2rem;
+    background-color: white;
+}
