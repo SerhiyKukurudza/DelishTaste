@@ -14,23 +14,6 @@
     <link rel="stylesheet" href="/css/index_style.css" />
   </head>
 
-  <body>
-    <nav>
-      <img class="logo" src="/images/mainLogo.png" />
-      <ul>
-        <li><a href="/">Home</a></li>
-        {{#user}}
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/auth/checkData">Check data user</a></li>
-        <li><a href="/auth/logout">Logout</a></li>
-        {{/user}}
-        {{^user}}
-        <li><a href="/login">Login</a></li>
-        <li><a href="/auth/checkData">Check data user</a></li>
-        <li><a href="/signUp">Sign Up</a></li>
-        {{/user}}
-      </ul>
-    </nav>
     <body>
       <nav>
         <img class="logo" src="/images/mainLogo.png" />

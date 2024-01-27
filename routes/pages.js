@@ -68,10 +68,11 @@ router.get('/backEnd', authController.isLoggedIn, (req, res) => {
   }
 })
 
-
+/*
 router.all('*', (req, res) => {
   res.render('404NotFound');
 })
+*/
 
 
 module.exports = router;

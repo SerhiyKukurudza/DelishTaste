@@ -11,7 +11,10 @@ CREATE TABLE user (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  role INT NOT NULL,
+  FOREIGN KEY (role)
+        REFERENCES role (idRole)
 );
 
 CREATE TABLE recipe (
@@ -25,15 +28,17 @@ CREATE TABLE recipe (
     price DECIMAL(10,2) NOT NULL,
     difficulty VARCHAR(20) NOT NULL
 );
-  password VARCHAR(255) NOT NULL,
-  role INT NOT NULL,
-  FOREIGN KEY (role)
-        REFERENCES role (idRole)
-);
+  
 
 INSERT INTO role (role) VALUES
 ('Admin'),
 ('User');
+
+-- Portuguese Cuisine Recipes
+INSERT INTO recipe (title, author, ingredients, preparation, category, time, price, difficulty)
+VALUES
+    ('Bacalhau à Brás', 'Chef Maria', 'Salted cod, onions, potatoes, eggs, olive oil', 'Soak the cod overnight. Shred the cod. Sauté onions and potatoes. Add cod and eggs. Cook until eggs are set.', 'Portuguese', 60, 25.99, 'Medium');
+
 
 INSERT INTO user (name, email, password, role) VALUES
 ('Serhiy Kukurudza', 'sergiykukurudza@gmail.com', '$2a$08$1.O8FKPKREkIjcZ23F3VZuspBo8UkR52Ksy41ddnaCAN57Z.btMBK', 1),
@@ -48,3 +53,6 @@ select * from role;
 SELECT user.id, user.name, user.email, user.password, role.role as role
 FROM user
 JOIN role ON user.role = role.idRole;
+
+
+    
