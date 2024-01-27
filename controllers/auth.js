@@ -1,4 +1,4 @@
-const colors = require("./miscellaneous");
+const { colors, isValidName, isValidEmail } = require('./miscellaneous');
 const connectionDataBase = require("./mysql");
 
 const jwt = require("jsonwebtoken");
@@ -25,8 +25,11 @@ exports.login = async (req, res) => {
       [email],
       async (error, results) => {
         console.log(results);
+        //console.log(results[0].name);
+
         if (
           !results ||
+          results.length === 0 ||
           !(await bcrypt.compare(password, results[0].password))
         ) {
           res.status(401).render("login", {
@@ -65,9 +68,31 @@ exports.signUp = (req, res) => {
 
   const { name, email, password, passwordConfirm } = req.body;
 
+  // Validar campos obrigatórios
+  if (!name || !email || !password || !passwordConfirm) {
+    return res.render("signUp", {
+      message: "All fields are mandatory",
+    });
+  }
+
+  if (!isValidName(name)) {
+    return res.render("signUp", {
+      message: "Please enter a valid name (only letters)",
+    });
+  }
+  
+  if (!isValidEmail(email)) {
+    return res.render("signUp", {
+      message: "Please enter a valid email (example: fullname@example.com)",
+    });
+  }
+  
+
+  const lowerCaseEmail = email.toLowerCase();
+
   connectionDataBase.query(
     "SELECT email FROM user WHERE email = ?",
-    [email],
+    [lowerCaseEmail],
     async (error, results) => {
       if (error) {
         console.log("Error:".red, colors.red(error));
@@ -88,15 +113,13 @@ exports.signUp = (req, res) => {
 
       connectionDataBase.query(
         "INSERT INTO user SET ?",
-        { name: name, email: email, password: hashedPassword },
+        { name: name, email: lowerCaseEmail, password: hashedPassword, role: 2},
         (error, results) => {
           if (error) {
             console.log("Error:".red, colors.red(error));
           } else {
             console.log(results);
-            return res.render("signUp", {
-              message: "User registered",
-            });
+            res.status(200).redirect("/");
           }
         }
       );
@@ -156,8 +179,6 @@ exports.isLoggedIn = async (req, res, next) => {
   }
 };
 
-
-
 exports.logout = async (req, res) => {
   res.cookie("jwt", "logout", {
     expires: new Date(Date.now() + 2 * 1000),
@@ -169,12 +190,8 @@ exports.logout = async (req, res) => {
   res.status(200).redirect("/");
 };
 
-
-
 exports.checkData = (req, res) => {
-  
   console.log(userBundle);
 
   res.status(200).redirect("/");
 };
-
