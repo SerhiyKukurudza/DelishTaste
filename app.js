@@ -7,6 +7,12 @@ const port = 3050;
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
 
+app.get('*', (req, res) => {
+  res.render('404NotFound');
+});
+
+
+
 app.listen(port, () => {
   console.log(`Servidor iniciado em http://localhost:${port}`.blue);
 });
