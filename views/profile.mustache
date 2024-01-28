@@ -12,6 +12,9 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"
       />
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.0/mustache.min.js"></script>
+
       <link rel="stylesheet" href="/css/profile_style.css" />
     </head>
 
@@ -26,106 +29,53 @@
         </ul>
       </nav>
 
-      <div class="container mt-4">
-        <div class="row">
-          <div class="col-4">
-            <div class="card">
-              <div class="avatar-ctn">
-                <img
-                  src="/images/avatar.png"
-                  class="avatar"
-                  alt="user profile picture"
-                />
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Username: {{ user.name }}</h6>
-                <h6 class="card-title">Email: {{ user.email }}</h6>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-8">
-            <div class="card text-center">
-              <div class="card-header">Profile Page</div>
-              <div class="card-body">
-                <h5 class="card-title">Welcome Back {{ user.name }}!</h5>
-                <p class="card-text">
-                  Edit your profile easily to share your information.
-                </p>
-                  <div id="editForm">
-                    <form>
-                      <div class="form-group">
-                        <label for="name">Name</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          name="name"
-                          placeholder="Enter name"
-                          value="{{user.name}}"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input
-                          type="email"
-                          class="form-control"
-                          id="email"
-                          name="email"
-                          placeholder="Enter Email Address"
-                          value="{{user.email}}"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="currentPassword">Current Password</label>
-                        <input
-                          type="password"
-                          class="form-control"
-                          id="currentPassword"
-                          name="currentPassword"
-                          placeholder="Enter Password"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="password">New Password</label>
-                        <input
-                          type="password"
-                          class="form-control"
-                          id="password"
-                          name="password"
-                          placeholder="Enter Password"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="passwordConfirm">Confirm Password</label>
-                        <input
-                          type="password"
-                          class="form-control"
-                          id="passwordConfirm"
-                          name="passwordConfirm"
-                          placeholder="Confirm Password"
-                        />
-                        <br>
-                        <input type="checkbox" onclick="showPass()"> Show Passwords
-                      </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    {{#message}}
-                    <h4 class="alert alert-danger mt-4">{{ message }}</h4>
-                    {{/message}}
-                  </div>
-                <button onclick="showEditForm()" id="editBtn" class="btn btn-primary">Edit Information</button>
+      <div class="profile">
+
+            <div class="col-4">
+              <div class="card">
+                <div class="avatar-ctn">
+                  <img
+                    src="/images/avatar.png"
+                    class="avatar"
+                    alt="user profile picture"
+                  />
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title">Username: {{ user.name }}</h6>
+                  <h6 class="card-title">Email: {{ user.email }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+
+            <div class="profileOptions">
+
+              <div class="sidebar">
+                <a onclick="loadContent('/test1')">Load Test1 Page</a>
+                <a onclick="loadContent('/des')">Home</a>
+                <a onclick="loadContent('/backEnd')">News</a>
+                <a onclick="getScriptPath()">Contact</a>
+                <a href="">About</a>
+              </div>
+
+              <div class="info" id="infoContent">
+    <!-- O conteúdo da seção de informações será carregado aqui -->
+              </div>
+
+            </div>
+
       </div>
 
+
+  
       <script
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"
       ></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
       <script>
         function showPass() {
@@ -150,6 +100,22 @@
           editBtn.style.display = 'none';
         }
 
+
+  function loadContent(page) {
+    
+    $.ajax({
+      url: page,
+      type: 'GET',
+      dataType: 'text',
+      success: function(data) {
+        var renderedContent = Mustache.render(data, {});
+        $('#infoContent').html(renderedContent);
+      },
+      error: function() {
+        $('#infoContent').html('<p>Erro ao carregar a página</p>');
+      }
+    });
+  }
       </script>
 
     </body>

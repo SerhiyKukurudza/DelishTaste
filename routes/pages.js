@@ -54,9 +54,6 @@ router.get("/api/recipes/:id", authController.isLoggedIn, (req, res) => {
   });
 });
 
-
-
-
 router.get("/api/recipes", (req, res) => {
   // Consulta SQL para selecionar todas as receitas da tabela 'recipe'
   const sql = "SELECT * FROM recipe";
@@ -84,5 +81,10 @@ router.get('/backEnd', authController.isLoggedIn, (req, res) => {
     //res.status(403).send('Forbidden: Access Denied');
   }
 })
+
+router.get("/test1", (req, res) => {
+  res.render("test1");
+});
+
 
 module.exports = router;
