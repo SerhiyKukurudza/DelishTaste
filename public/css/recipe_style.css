@@ -1,0 +1,106 @@
+nav {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Adicionado para centralizar verticalmente */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav li {
+  list-style: none;
+  padding: 10px;
+}
+
+nav li a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
+}
+
+nav li:not(:last-child) a:hover {
+  color: #E97D3F;
+  text-decoration: none;
+}
+
+nav li:last-child a {
+  background-color: #E97D3F;
+  padding: 15px 30px;
+  border-radius: 60px;
+  color: white;
+}
+
+nav li:last-child a:hover {
+  background-color: #ed600f;
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+/* Seu CSS */
+.recipe-container {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 20px;
+}
+
+.recipe-info {
+  width: 50%; /* Ajusta a largura do bloco de informações */
+}
+
+.recipe-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none; /* Remove os marcadores de lista padrão */
+  padding: 0;
+}
+
+/* Seu CSS */
+ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold; /* Adiciona negrito aos itens da lista */
+}
+
+
+.recipe-image {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+  image-rendering: optimizeQuality;
+}
+
+/* Seu CSS */
+.recipe-preparation {
+  font-size: 16px;
+  margin-bottom: 10px;
+  white-space: pre-line; /* Mantém quebras de linha no texto */
+  list-style-type: none; /* Remove a estilização padrão de lista */
+}
+

@@ -17,17 +17,6 @@ app.listen(port, () => {
   console.log(`Servidor iniciado em http://localhost:${port}`.blue);
 });
 
-
-
-
-
-
-
-
-
-
-
-
 /*
 // View com a lista de alunos proveniente da base de dados
 app.get('/users', (req, res) => {
@@ -56,7 +45,7 @@ app.get('/api/aluno', (req, res) => {
 });
 
 // GET - Retornar um aluno por número
-app.get('/api/aluno/:numero', (req, res) => {
+app.get('/api/recipes/:id', (req, res) => {
   const alunoNumero = parseInt(req.params.numero);
   const aluno = alunos.find(a => a.numero === alunoNumero);
 

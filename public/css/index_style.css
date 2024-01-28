@@ -88,8 +88,25 @@ nav li:last-child a:hover{
 .jumbotron {
     padding: 4rem 2rem;
     background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.card{
-    width: 200px;
+.card {
+    width: calc(33.33% - 20px); /* Calcule a largura para 3 colunas com algum espaço entre eles */
+    margin-bottom: 20px; /* Adicione algum espaço entre os cards */
+    box-sizing: border-box; /* Certifique-se de que a largura inclua margens e preenchimentos */
+}
+
+.card-image {
+    width: 300px; /* Substitua pelo valor desejado */
+    height: 150px; /* Substitua pelo valor desejado */
+}
+
+
+@media (max-width: 767px) {
+    .card {
+        width: calc(50% - 20px); /* Em telas menores, exiba 2 colunas */
+    }
 }
