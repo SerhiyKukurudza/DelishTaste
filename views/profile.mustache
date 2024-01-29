@@ -5,7 +5,9 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Home Page</title>
+      <title>Profile</title>
+      <link rel="icon" type="image/png" href="/images/mainLogoTitleBar.png"/>
+
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -13,7 +15,7 @@
         crossorigin="anonymous"
       />
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.0/mustache.min.js"></script>
+      <script src="https://kit.fontawesome.com/4e13ac108a.js" crossorigin="anonymous"></script>
 
       <link rel="stylesheet" href="/css/profile_style.css" />
     </head>
@@ -32,7 +34,7 @@
 
       <div class="profile">
 
-            <div class="col-4">
+            <div class="col-3.5">
               <div class="card">
                 <div class="avatar-ctn">
                   <img
@@ -51,33 +53,138 @@
             <div class="profileOptions">
 
               <div class="sidebar">
-                <a onclick="loadContent('/test1')">Load Test1 Page</a>
-                <a onclick="loadContent('/des')">Home</a>
-                <a onclick="loadContent('/backEnd')">News</a>
-                <a onclick="getScriptPath()">Contact</a>
-                <a href="">About</a>
+                <a onclick="profileFragment()"><i class="fa-solid fa-user "></i>Profile</a>
+                <a onclick="personalDetailsFragment()"><i class="fa-solid fa-address-book"></i>Personal details</a>
+                <a onclick="changePasswordFragment()"><i class="fa-solid fa-key"></i>Change password</a>
               </div>
 
-              <div class="info" id="infoContent">
-    <!-- O conteúdo da seção de informações será carregado aqui -->
-              </div>
+              <div class="info">
 
+                <div id="profileFragment" style="display: {{#showProfileFragment}}block{{/showProfileFragment}}{{^showProfileFragment}}none{{/showProfileFragment}};">
+                  <h5 class="card-title">Welcome Back {{ user.name }}!</h5>
+                      <p class="card-text">
+                        This is your profile page, where you can edit account details, such as personal information and change your password.
+                  </p>
+                </div>
+
+                <div id="personalDetailsFragment" style="display: {{#personalDetailsFragment}}block{{/personalDetailsFragment}}{{^personalDetailsFragment}}none{{/personalDetailsFragment}};">
+                  <h5 class="card-title">Personal details</h5>
+                      <p class="card-text">
+                        On this tab, you have the ability to change personal information.
+                      </p>
+
+                    <div class="personalDetailsForm" >
+                      <form action="/profile/updatePersonalDetails" method="POST">
+                          <div class="form-group">
+                            <label for="name">Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="name"
+                              name="name"
+                              placeholder="Enter name"
+                              value="{{user.name}}"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="email"
+                              name="email"
+                              placeholder="Enter Email Address"
+                              value="{{user.email}}"
+                            />
+                          </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      {{#message}}
+                      <h4 class="alert alert-danger mt-4">{{ message }}</h4>
+                      {{/message}}
+                    </div>
+
+                </div>
+
+                <div id="changePasswordFragment" style="display: {{#changePasswordFragment}}block{{/changePasswordFragment}}{{^changePasswordFragment}}none{{/changePasswordFragment}};">
+                  <h5 class="card-title">Change password</h5>
+                      <p class="card-text">
+                        On this tab, you have the ability to change your password.
+                  </p>
+
+                  <div class="changePasswordForm">
+                      <form action="/profile/updatePassword" method="POST">
+                          <div class="form-group">
+                          <label for="currentPassword">Current Password</label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="currentPassword"
+                            name="currentPassword"
+                            placeholder="Enter Password"
+                          />
+                          </div>
+                          <div class="form-group">
+                            <label for="password">New Password</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="password"
+                              name="password"
+                              placeholder="Enter Password"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="passwordConfirm">Confirm Password</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="passwordConfirm"
+                              name="passwordConfirm"
+                              placeholder="Confirm Password"
+                            />
+                            <br>
+                            <input type="checkbox" onclick="showPass()"> Show Passwords
+                           </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      {{#message}}
+                      <h4 class="alert alert-danger mt-3">{{ message }}</h4>
+                      {{/message}}
+                    </div>
+                </div>
+              </div>
             </div>
-
       </div>
 
 
-  
+
       <script
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"
       ></script>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
       <script>
+
+        function profileFragment() {
+          document.getElementById("profileFragment").style.display = 'block';
+          document.getElementById("personalDetailsFragment").style.display = 'none';
+          document.getElementById("changePasswordFragment").style.display = 'none';
+        }
+
+        function personalDetailsFragment() {
+          document.getElementById("profileFragment").style.display = 'none';
+          document.getElementById("personalDetailsFragment").style.display = 'block';
+          document.getElementById("changePasswordFragment").style.display = 'none';
+        }
+        
+        function changePasswordFragment() {
+          document.getElementById("profileFragment").style.display = 'none';
+          document.getElementById("personalDetailsFragment").style.display = 'none';
+          document.getElementById("changePasswordFragment").style.display = 'block';
+        }
+
         function showPass() {
           var currentPassword = document.getElementById("currentPassword");
           var password = document.getElementById("password");
@@ -100,22 +207,6 @@
           editBtn.style.display = 'none';
         }
 
-
-  function loadContent(page) {
-    
-    $.ajax({
-      url: page,
-      type: 'GET',
-      dataType: 'text',
-      success: function(data) {
-        var renderedContent = Mustache.render(data, {});
-        $('#infoContent').html(renderedContent);
-      },
-      error: function() {
-        $('#infoContent').html('<p>Erro ao carregar a página</p>');
-      }
-    });
-  }
       </script>
 
     </body>

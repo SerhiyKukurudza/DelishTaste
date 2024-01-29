@@ -1,4 +1,4 @@
-const { colors, isValidName, isValidEmail } = require('./miscellaneous');
+const { colors, isValidName, isValidEmail, setUserBundle, getUserBundle } = require('./miscellaneous');
 const connectionDataBase = require("./mysql");
 
 const jwt = require("jsonwebtoken");
@@ -7,8 +7,6 @@ const bcrypt = require("bcryptjs");
 const { promisify } = require("util");
 
 colors.enable();
-
-let userBundle;
 
 exports.login = async (req, res) => {
   try {
@@ -149,8 +147,9 @@ exports.isLoggedIn = async (req, res, next) => {
             //console.log("Result from the database query:");
             //console.log(result);
 
-            userBundle = JSON.stringify(result, null, 2);
+            const userBundle = JSON.stringify(result, null, 2);
 
+            setUserBundle(userBundle);
             //console.log(userBundle);
 
             if (!Array.isArray(result) || result.length === 0) {
@@ -186,11 +185,13 @@ exports.logout = async (req, res) => {
   });
 
   userBundle = null;
+  setUserBundle(userBundle);
 
   res.status(200).redirect("/");
 };
 
 exports.checkData = (req, res) => {
+  const userBundle = getUserBundle();
   console.log(userBundle);
 
   res.status(200).redirect("/");

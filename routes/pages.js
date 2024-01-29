@@ -26,10 +26,27 @@ router.get("/profile", authController.isLoggedIn, (req, res) => {
   if (req.user) {
     res.render("profile", {
       user: req.user,
+      showProfileFragment: true
     });
   } else {
     res.redirect("/login");
   }
+});
+
+router.get("/api/recipes", (req, res) => {
+  // Consulta SQL para selecionar todas as receitas da tabela 'recipe'
+  const sql = "SELECT * FROM recipe";
+
+  // Execute a consulta
+  connectionDataBase.query(sql, (err, recipes) => {
+    if (err) {
+      console.error("Erro na consulta SQL:", err);
+      res.status(500).json({ error: "Erro ao buscar receitas na base de dados" });
+      return;
+    }
+    // Se a consulta for bem-sucedida, envie as receitas como resposta
+    res.json(recipes);
+  });
 });
 
 router.get("/api/recipes/:id", authController.isLoggedIn, (req, res) => {
@@ -54,21 +71,6 @@ router.get("/api/recipes/:id", authController.isLoggedIn, (req, res) => {
   });
 });
 
-router.get("/api/recipes", (req, res) => {
-  // Consulta SQL para selecionar todas as receitas da tabela 'recipe'
-  const sql = "SELECT * FROM recipe";
-
-  // Execute a consulta
-  connectionDataBase.query(sql, (err, recipes) => {
-    if (err) {
-      console.error("Erro na consulta SQL:", err);
-      res.status(500).json({ error: "Erro ao buscar receitas na base de dados" });
-      return;
-    }
-    // Se a consulta for bem-sucedida, envie as receitas como resposta
-    res.json(recipes);
-  });
-});
 
 router.get('/backEnd', authController.isLoggedIn, (req, res) => {
   const user = req.user ? true : false;
@@ -81,10 +83,6 @@ router.get('/backEnd', authController.isLoggedIn, (req, res) => {
     //res.status(403).send('Forbidden: Access Denied');
   }
 })
-
-router.get("/test1", (req, res) => {
-  res.render("test1");
-});
 
 
 module.exports = router;

@@ -6,6 +6,7 @@ const port = 3050;
 //Define Routes
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
+app.use("/profile", require("./routes/profile"));
 
 app.get('*', (req, res) => {
   res.render('404NotFound');

@@ -70,29 +70,34 @@ nav li:last-child a:hover {
 
 .profile {
   display: flex;
-  max-width: 1400px;
+  max-width: 1200px;
   height: 600px;
   margin: 0 auto;
-  background-color: red;
 }
 
 .profileOptions {
   display: flex;
+  justify-content: space-evenly;
   width: 800px;
-  height: 600px;
-  background-color: blue;
+  height: 550px;
+  margin-left: 110px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(231, 231, 231);
+
 }
 
 .info {
-  width: 600px;
-  height: 300px;
+  width: 900px;
+  height: 545px;
   background-color: violet;
-  position: fixed;
-  margin-left: 200px;
 }
 
 .sidebar {
-  width: 200px;
+  width: 300px;
+  border-right-style: solid;
+  border-width: 2px;
+  border-color: rgb(231, 231, 231);
   display: flex;
   flex-direction: column; /* Para empilhar verticalmente os itens */
   align-items: center;
@@ -106,9 +111,44 @@ nav li:last-child a:hover {
   cursor: pointer;
 }
 
+.sidebar a i {
+  margin-right: 10px;
+}
+
 .sidebar a:hover {
   background-color: #ed600f;
   text-align: center;
   width: 200px;
   color: white;
 }
+
+
+#profileFragment {
+  display: block;
+  text-align: center;
+  margin: 30px auto;
+}
+
+#personalDetailsFragment {
+  display: none;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.personalDetailsForm{
+  width: 300px;
+  margin: 40px auto;
+}
+
+#changePasswordFragment {
+  display: none;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.changePasswordForm{
+  width: 300px;
+  margin: 20px auto;
+}
+
+
