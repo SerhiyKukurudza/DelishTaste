@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Back End</title>
+      <link rel="icon" type="image/png" href="/images/mainLogoTitleBar.png" />
+      <link rel="stylesheet" href="/css/recipesForApprovalBackEnd_style.css" />
+    </head>
+
+    <body>
+      <div id="overlay"></div>
+      <nav>
+        <img class="teste" onclick="openNav()" src="/images/menuButton.png" />
+
+        <a href="/"><img class="logo" src="/images/mainLogo.png" /></a>
+
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+      </nav>
+
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="/backEnd">Dashboard</a>
+        <a href="/userManagementBackEnd">User management</a>
+        <a href="/recipeManagementBackEnd">Recipe management</a>
+        <a href="/recipesForApprovalBackEnd">Recipes for Approval</a>
+      </div>
+
+      <div id="main">recipes for aproval</div>
+
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "300px";
+          document.getElementById("overlay").style.display = "block";
+          document.getElementById("nav").style.backgroundColor =
+            "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("overlay").style.display = "none";
+          document.getElementById("nav").style.backgroundColor = "#fff";
+        }
+      </script>
+
+    </body>
+  </html>
+</html>

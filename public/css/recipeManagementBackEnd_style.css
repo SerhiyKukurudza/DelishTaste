@@ -1,0 +1,177 @@
+nav {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav li {
+  list-style: none;
+  padding: 10px;
+}
+
+nav li a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
+}
+
+nav li:not(:last-child) a:hover {
+  color: #e97d3f;
+  text-decoration: none;
+}
+
+nav li:last-child a {
+  background-color: #e97d3f;
+  padding: 15px 30px;
+  border-radius: 60px;
+  color: white;
+}
+
+nav li:last-child a:hover {
+  background-color: #ed600f;
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  margin-left: 150px;
+  width: 150px;
+  height: 150px;
+}
+
+.teste {
+  width: 30px;
+  height: 30px;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 100px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 30px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #ed600f;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.teste {
+  cursor: pointer;
+}
+
+#main {
+  text-align: center;
+  border-radius: 40px;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: 100vh;
+}
+
+
+#main {
+  text-align: center;
+  border-radius: 40px;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 500px;
+}
+
+.recipes-table {
+  border: solid 1px #DDEEEE;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font: normal 16px Arial, sans-serif;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.recipes-table th {
+  background-color: #DDEFEF;
+  border: solid 1px #DDEEEE;
+  color: #336B6B;
+  padding: 15px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #fff;
+}
+.recipes-table td {
+  border: solid 1px #DDEEEE;
+  color: #333;
+  padding: 20px;
+}
+
+.newButton {
+  background-color: #e97d3f;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  text-decoration: none;
+}
+
+.newButton:hover {
+  background-color: #ed600f;
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}

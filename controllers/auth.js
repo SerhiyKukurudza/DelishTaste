@@ -85,7 +85,6 @@ exports.signUp = (req, res) => {
     });
   }
   
-
   const lowerCaseEmail = email.toLowerCase();
 
   connectionDataBase.query(

@@ -1,98 +1,108 @@
-nav{
-    background-color: #ffffff;
-    color: #000000;
-    padding: 0px 0px 0px 0px;
-    display: flex;
-    justify-content: space-between;
-    max-width: 1300px;
-    margin: 0 auto;
+nav {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-nav ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-nav li{
-    list-style: none;
-    padding: 10px;
+nav li {
+  list-style: none;
+  padding: 10px;
 }
 
-nav li a{
-    color: #000000;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 8px;
+nav li a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
 }
 
-nav li:not(:last-child) a:hover{
-    color: #E97D3F;
-    text-decoration: none;
+nav li:not(:last-child) a:hover {
+  color: #e97d3f;
+  text-decoration: none;
 }
 
-nav li:last-child a{
-    background-color: #E97D3F;
-    padding: 15px 30px;
-    border-radius: 60px;
-    color: white;
+nav li:last-child a {
+  background-color: #e97d3f;
+  padding: 15px 30px;
+  border-radius: 60px;
+  color: white;
 }
 
-nav li:last-child a:hover{
-    background-color: #ed600f;
-    color: white;
-    text-decoration: none;
+nav li:last-child a:hover {
+  background-color: #ed600f;
+  color: white;
+  text-decoration: none;
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 .recipe-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .recipe-container h2 {
-    text-align: center;
-    color: #333;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-top: 10px;
-  }
-  
-  input,
-  textarea,
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #E97D3F;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #ed600f;
-  }
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #e97d3f;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ed600f;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  max-width: 1300px;
+  margin: 0 auto;
+}

@@ -1,54 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ recipe.title }}</title>
+    <link rel="icon" type="image/png" href="/images/mainLogoTitleBar.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/recipe_style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{recipe.title}}</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/css/recipe_style.css" />
-</head>
-
-<body>
-  <nav>
-    <img class="logo" src="/images/mainLogo.png" />
-    <ul>
-      <li><a href="/">Home</a></li>
-      {{#user}}
-      <li><a href="/profile">Profile</a></li>
-      {{#isAdmin}}
-      <li><a href="/backEnd">BackEnd</a></li>
-      {{/isAdmin}}
-      <li><a href="/auth/checkData">Check data user</a></li>
-      <li><a href="/auth/logout">Logout</a></li>
-      {{/user}}
-      {{^user}}
-      <li><a href="/login">Login</a></li>
-      <li><a href="/auth/checkData">Check data user</a></li>
-      <li><a href="/signUp">Sign Up</a></li>
-      {{/user}}
-    </ul>
-  </nav>
-
-  <div class="recipe-container">
-    <div class="recipe-info">
-      <h2 class="recipe-name">{{recipe.title}}</h2>
+  <body>
+    <nav>
+      <a href="/"><img class="logo" src="/images/mainLogo.png"/></a>
       <ul>
-        <li class="recipe-ingredients">Ingredients: </li> {{recipe.ingredients}}
-        <li class="recipe-preparation">Preparation: </li> {{recipe.preparation}}
-        <li class="recipe-category">Category: </li> {{recipe.category}}
-        <li class="recipe-time">Time:</li> {{recipe.time}} minutes
-        <li class="recipe-price">Price: </li> {{recipe.price}}€
-        <li class="recipe-difficulty">Difficulty: </li> {{recipe.difficulty}}
-        <li class="recipe-author"> Author: </li> {{recipe.author}}
+        <li><a href="/">Home</a></li>
+        {{#user}}
+        <li><a href="/profile">Profile</a></li>
+        {{#isAdmin}}
+        <li><a href="/backEnd">BackEnd</a></li>
+        {{/isAdmin}}
+        <li><a href="/auth/logout">Logout</a></li>
+        {{/user}}
+        {{^user}}
+        <li><a href="/login">Log In</a></li>
+        <li><a href="/signUp">Sign Up</a></li>
+        {{/user}}
       </ul>
+    </nav>
+
+    <div class="recipe-container">
+      <div class="recipe-info">
+        <h2 class="recipe-name">{{ recipe.title }}</h2>
+        <ul>
+          <li class="recipe-ingredients">Ingredients:</li>
+          {{
+            recipe.ingredients
+          }}
+          <li class="recipe-preparation">Preparation:</li>
+          {{
+            recipe.preparation
+          }}
+          <li class="recipe-category">Category:</li>
+          {{
+            recipe.category
+          }}
+          <li class="recipe-time">Time:</li>
+          {{
+            recipe.time
+          }}
+          minutes
+          <li class="recipe-price">Price:</li>
+          {{
+            recipe.price
+          }}€
+          <li class="recipe-difficulty">Difficulty:</li>
+          {{
+            recipe.difficulty
+          }}
+          <li class="recipe-author">Author:</li>
+          {{
+            recipe.author
+          }}
+        </ul>
+      </div>
+      <img
+        class="recipe-image"
+        src="{{ recipe.image }}"
+        alt="{{ recipe.title }}"
+      />
     </div>
-    <img class="recipe-image" src="{{recipe.image}}" alt="{{recipe.title}}" />
-  </div>
 
-  <!-- Seções posteriores do código ... -->
-
-</body>
-
+    <footer>
+      <p>&copy; 2024 Made by Serhiy Kukurudza and Bruno Rosa</p>
+    </footer>
+  </body>
 </html>

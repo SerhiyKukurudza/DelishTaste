@@ -3,16 +3,15 @@ const appSetup = require("./controllers/appSetup");
 const app = appSetup.app;
 const port = 3050;
 
-//Define Routes
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
+app.use("/api", require("./routes/api"));
 app.use("/profile", require("./routes/profile"));
+
 
 app.get('*', (req, res) => {
   res.render('404NotFound');
 });
-
-
 
 app.listen(port, () => {
   console.log(`Servidor iniciado em http://localhost:${port}`.blue);

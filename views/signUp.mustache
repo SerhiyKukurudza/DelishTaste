@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
+    <title>Sign Up</title>
+    <link rel="icon" type="image/png" href="/images/mainLogoTitleBar.png" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -28,7 +30,8 @@
 
       <div class="emptySpace">
         <div class="container">
-          <img class="logo" src="/images/mainLogo.png" />
+          
+          <a href="/"><img class="logo" src="/images/mainLogo.png"/></a>
 
           <form action="/auth/signUp" method="POST">
             <div class="form-group">
@@ -79,6 +82,8 @@
             </div>
             <button type="submit">Sign Up</button>
           </form>
+          <br>
+          <p>Already registered? <a href="/login" style="color: #E97D3F;">Log in</a></p>
           {{#message}}
           <h4 class="alert alert-danger mt-4">{{ message }}</h4>
           {{/message}}

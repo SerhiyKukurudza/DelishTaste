@@ -1,168 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" type="image/png" href="/images/mainLogoTitleBar.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/index_style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home Page</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/css/index_style.css" />
-</head>
+  <body>
+    <nav>
+      <a href="/"><img class="logo" src="/images/mainLogo.png"/></a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        {{#user}}
+        <li><a href="/profile">Profile</a></li>
+        {{#isAdmin}}
+        <li><a href="/backEnd">BackEnd</a></li>
+        {{/isAdmin}}
+        <li><a href="/auth/logout">Logout</a></li>
+        {{/user}}
+        {{^user}}
+        <li><a href="/login">Log In</a></li>
+        <li><a href="/signUp">Sign Up</a></li>
+        {{/user}}
+      </ul>
+    </nav>
 
-<body>
-  <nav>
-    <img class="logo" src="/images/mainLogo.png" />
-    <ul>
-      <li><a href="/">Home</a></li>
-      {{#user}}
-      <li><a href="/profile">Profile</a></li>
-      {{#isAdmin}}
-      <li><a href="/backEnd">BackEnd</a></li>
-      {{/isAdmin}}
-      <li><a href="/auth/checkData">Check data user</a></li>
-      <li><a href="/auth/logout">Logout</a></li>
-      {{/user}}
-      {{^user}}
-      <li><a href="/login">Login</a></li>
-      <li><a href="/auth/checkData">Check data user</a></li>
-      <li><a href="/signUp">Sign Up</a></li>
-      {{/user}}
-    </ul>
-  </nav>
-
-  <div class="homeImg">
-    <h1 class="textTop">Choose from thousands of recipes</h1>
-    <p class="textMiddle">
-      Appropriately integrate technically sound value with scalable
-      infomediaries negotiate sustainable strategic theme areas
-    </p>
-    <a class="textBottom" href="/register">Sign up today</a>
-  </div>
-
-  <div class="container">
-    <!-- Filtros -->
-    <div class="filters">
-      <div class="buttons">
-        <a class="btn btn-primary" href="/createRecipePage">Add Recipes</a>
-        <input type="text" id="searchInput" placeholder="Search by title or category" />
-        <button class="btn btn-primary" onclick="searchRecipes()">Search</button>
-      </div>
-      <div class="filter-test"></div>
+    <div class="homeImg">
+      <h1 class="textTop">Choose from thousands of recipes</h1>
+      <p class="textMiddle">
+        Discover the culinary world! Become the chef of your own gastronomic
+        journey right now!
+      </p>
+      <a class="textBottom" href="/signUp">Sign up today -></a>
     </div>
 
-    <!-- Receitas -->
-    <div class="receitas">
-      <div class="jumbotron" id="recipeJumbotron">
-        <!-- Botão para adicionar receita -->
-        {{#recipes}}
-        {{#title}}
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">Author: {{author}}</p>
-            <a href="/api/recipes/{{id}}"> <img class="card-image" src="{{image}}" alt="{{title}} image" /> </a>
-            <!-- Adicione mais campos conforme necessário -->
-          </div>
+    <div class="container">
+      <div class="filters">
+        <div class="addRecipe">
+          <a class="newButton" href="/createRecipePage">Add Recipe</a>
         </div>
-        {{/title}}
-        {{/recipes}}
-        {{^recipes}}
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">No recipes available</h5>
-          </div>
+      </div>
+
+      <div class="recipes">
+        <div class="searchRecipes">
+          <form>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="searchInput"
+                name="searchInput"
+                placeholder="Search by title or category"
+              />
+              <button class="newButton" type="submit">Search</button>
+            </div>
+          </form>
         </div>
-        {{/recipes}}
+
+        <div class="jumbotron" id="recipeJumbotron">
+          <!-- Recipes -->
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- End Recipe Section -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM fully loaded. Fetching recipes...");
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log('DOM fully loaded. Fetching recipes...');
-
-      fetch("/api/recipes") // Substitua pela sua rota real
-        .then(response => response.json())
-        .then(data => {
-          const recipes = data;
-          const recipeJumbotron = document.getElementById('recipeJumbotron');
+        fetch("/api/api/recipes")
+          .then((response) => response.json())
+          .then((data) => {
+            const recipes = data;
+            const recipeJumbotron = document.getElementById("recipeJumbotron");
 
             if (recipes && recipes.length > 0) {
-              // Exemplo: Acesse o título da primeira receita
               //alert(recipes[0].title);
               console.log(recipes);
-              console.log('Recipes available. Displaying...');
+              console.log("Recipes available. Displaying...");
 
-            // Renderizar os dados no HTML
-            recipeJumbotron.innerHTML = '';
-            recipes.forEach(recipe => {
-              if (recipe.title) {
-                recipeJumbotron.innerHTML += `
+              // Renderizar os dados no HTML
+              recipeJumbotron.innerHTML = "";
+              recipes.forEach((recipe) => {
+                if (recipe.title) {
+                  recipeJumbotron.innerHTML += `
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">${recipe.title}</h5>
+                        <p class="card-text">Author: ${recipe.author}</p>
+                        <a href="/api/api/recipes/${recipe.id}"> <img class="card-image" src="${recipe.image}" alt="${recipe.title} image" /> </a>
+
+                      </div>
+                    </div>
+                  `;
+                }
+              });
+            } else {
+              console.log("No recipes available.");
+              recipeJumbotron.innerHTML =
+                '<div class="card"><div class="card-body" style="width: 1000px;"><h5 class="card-title">No recipes available</h5></div></div>';
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching recipes:", error);
+          });
+      });
+
+      //-------------------------------------------------------------------------------------------------
+      function searchRecipes() {
+        const searchInput = document.getElementById("searchInput").value;
+
+        fetch(`/api/recipes/search?query=${encodeURIComponent(searchInput)}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(
+                `Error searching recipes: ${response.statusText}`
+              );
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const recipes = data.recipes; // Ajustado para acessar a chave "recipes"
+            const recipeJumbotron = document.getElementById("recipeJumbotron");
+
+            if (recipes && recipes.length > 0) {
+              console.log("Recipes found. Displaying...");
+              recipeJumbotron.innerHTML = "";
+              recipes.forEach((recipe) => {
+                if (recipe.title) {
+                  recipeJumbotron.innerHTML += `
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title">${recipe.title}</h5>
                         <p class="card-text">Author: ${recipe.author}</p>
                         <a href="/api/recipes/${recipe.id}"> <img class="card-image" src="${recipe.image}" alt="${recipe.title} image" /> </a>
-                        <!-- Adicione mais campos conforme necessário -->
                       </div>
                     </div>
                   `;
-              }
-            });
-          } else {
-            console.log('No recipes available.');
-            recipeJumbotron.innerHTML = '<div class="card"><div class="card-body"><h5 class="card-title">No recipes available</h5></div></div>';
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching recipes:', error);
-        });
-    });
-
- function searchRecipes() {
-  const searchInput = document.getElementById('searchInput').value;
-
-  fetch(`/api/recipes/search?query=${encodeURIComponent(searchInput)}`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error searching recipes: ${response.statusText}`);
+                }
+              });
+            } else {
+              console.log("No recipes found.");
+              recipeJumbotron.innerHTML =
+                '<div class="card"><div class="card-body"><h5 class="card-title">No recipes found</h5></div></div>';
+            }
+          })
+          .catch((error) => {
+            console.error("Error searching recipes:", error);
+            recipeJumbotron.innerHTML =
+              '<div class="card"><div class="card-body"><h5 class="card-title">Error searching recipes</h5></div></div>';
+          });
       }
-      return response.json();
-    })
-    .then(data => {
-      const recipes = data.recipes; // Ajustado para acessar a chave "recipes"
-      const recipeJumbotron = document.getElementById('recipeJumbotron');
+    </script>
 
-      if (recipes && recipes.length > 0) {
-        console.log('Recipes found. Displaying...');
-        recipeJumbotron.innerHTML = '';
-        recipes.forEach(recipe => {
-          if (recipe.title) {
-            recipeJumbotron.innerHTML += `
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">${recipe.title}</h5>
-                    <p class="card-text">Author: ${recipe.author}</p>
-                    <a href="/api/recipes/${recipe.id}"> <img class="card-image" src="${recipe.image}" alt="${recipe.title} image" /> </a>
-                  </div>
-                </div>
-              `;
-          }
-        });
-      } else {
-        console.log('No recipes found.');
-        recipeJumbotron.innerHTML = '<div class="card"><div class="card-body"><h5 class="card-title">No recipes found</h5></div></div>';
-      }
-    })
-    .catch(error => {
-      console.error('Error searching recipes:', error);
-      recipeJumbotron.innerHTML = '<div class="card"><div class="card-body"><h5 class="card-title">Error searching recipes</h5></div></div>';
-    });
-}
-  </script>
-</body>
-
+    <footer>
+      <p>&copy; 2024 Made by Serhiy Kukurudza and Bruno Rosa</p>
+    </footer>
+  </body>
 </html>

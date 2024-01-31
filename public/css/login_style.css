@@ -3,9 +3,9 @@
   height: 200px;
 }
 
-.containerTest {
-  height: 100vh; /* 100% da altura da viewport */
-  width: 100%; /* 100% da largura da viewport */
+.mainContainer {
+  height: 100vh;
+  width: 100%;
   display: flex;
 }
 
@@ -31,8 +31,8 @@
   flex: 1;
   background-color: white;
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -40,9 +40,9 @@
   height: 600px;
   width: 500px;
   display: flex;
-  flex-direction: column; /* Alinha os itens na vertical */
-  justify-content: center; /* Centraliza verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -78,8 +78,8 @@
 .textTop,
 .textMiddle,
 .textBottom {
-  position: absolute; /* Permite posicionar os elementos relativamente à .containerTest */
-  color: white; /* Ajuste a cor do texto conforme necessário para melhor contraste */
+  position: absolute;
+  color: white;
   font-weight: bold;
 }
 
