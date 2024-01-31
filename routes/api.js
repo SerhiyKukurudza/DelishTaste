@@ -80,7 +80,7 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, '../public/images/dishes/')); // Caminho correto em relação ao diretório do arquivo api.js
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now().ToShortDate() + '-' + file.originalname);
+    cb(null, Date.now() + '-' + file.originalname);
   },
 });
 
