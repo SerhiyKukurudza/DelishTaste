@@ -90,9 +90,11 @@
           const recipes = data;
           const recipeJumbotron = document.getElementById('recipeJumbotron');
 
-          if (recipes && recipes.length > 0) {
-            console.log(recipes);
-            console.log('Recipes available. Displaying...');
+            if (recipes && recipes.length > 0) {
+              // Exemplo: Acesse o título da primeira receita
+              //alert(recipes[0].title);
+              console.log(recipes);
+              console.log('Recipes available. Displaying...');
 
             // Renderizar os dados no HTML
             recipeJumbotron.innerHTML = '';

@@ -1,69 +1,154 @@
-nav{
-    background-color: #ffffff;
-    color: #000000;
-    padding: 0px 0px 0px 0px;
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+nav {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-nav ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-nav li{
-    list-style: none;
-    padding: 10px;
+nav li {
+  list-style: none;
+  padding: 10px;
 }
 
-nav li a{
-    color: #000000;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 8px;
+nav li a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
 }
 
-nav li:not(:last-child) a:hover{
-    color: #E97D3F;
-    text-decoration: none;
+nav li:not(:last-child) a:hover {
+  color: #e97d3f;
+  text-decoration: none;
 }
 
-nav li:last-child a{
-    background-color: #E97D3F;
-    padding: 15px 30px;
-    border-radius: 60px;
-    color: white;
+nav li:last-child a {
+  background-color: #e97d3f;
+  padding: 15px 30px;
+  border-radius: 60px;
+  color: white;
 }
 
-nav li:last-child a:hover{
-    background-color: #ed600f;
-    color: white;
-    text-decoration: none;
+nav li:last-child a:hover {
+  background-color: #ed600f;
+  color: white;
+  text-decoration: none;
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
-.avatar{
-    width: 350px;
-    height: 350px;
+.avatar {
+  width: 350px;
+  height: 350px;
 }
 
-.card-body{
-    text-align: center;
+.card-body {
+  text-align: center;
 }
 
-#editForm{
-    display: none;
+#editForm {
+  display: none;
 }
 
-#editBtn{
-    margin: auto;
-    width: 200px;
-    display: block;
+#editBtn {
+  margin: auto;
+  width: 200px;
+  display: block;
 }
+
+.profile {
+  display: flex;
+  max-width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.profileOptions {
+  display: flex;
+  justify-content: space-evenly;
+  width: 800px;
+  height: 550px;
+  margin-left: 110px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(231, 231, 231);
+
+}
+
+.info {
+  width: 900px;
+  height: 545px;
+  background-color: violet;
+}
+
+.sidebar {
+  width: 300px;
+  border-right-style: solid;
+  border-width: 2px;
+  border-color: rgb(231, 231, 231);
+  display: flex;
+  flex-direction: column; /* Para empilhar verticalmente os itens */
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.sidebar a {
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sidebar a i {
+  margin-right: 10px;
+}
+
+.sidebar a:hover {
+  background-color: #ed600f;
+  text-align: center;
+  width: 200px;
+  color: white;
+}
+
+
+#profileFragment {
+  display: block;
+  text-align: center;
+  margin: 30px auto;
+}
+
+#personalDetailsFragment {
+  display: none;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.personalDetailsForm{
+  width: 300px;
+  margin: 40px auto;
+}
+
+#changePasswordFragment {
+  display: none;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.changePasswordForm{
+  width: 300px;
+  margin: 20px auto;
+}
+
+
