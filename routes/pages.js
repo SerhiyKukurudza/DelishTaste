@@ -85,11 +85,43 @@ router.get('/backEnd', authController.isLoggedIn, (req, res) => {
   }
 })
 
+router.get("/createRecipePage", authController.isLoggedIn, (req, res) => {
+  if (req.user) {
+    res.render("createRecipePage", {
+      user: req.user,
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
 /*
 router.all('*', (req, res) => {
   res.render('404NotFound');
 })
 */
+
+router.get('/api/recipes/search', (req, res) => {
+  const query = req.query.query.toLowerCase();
+  console.log('Search query:', query);
+
+  // Construct the SQL query to search for recipes
+  const sql = `SELECT * FROM recipe WHERE LOWER(title) LIKE '%${query}%'`;
+
+  // Execute the SQL query
+  connectionDataBase.query(sql, (err, recipes) => {
+    if (err) {
+      console.error('Error executing SQL query:', err);
+      res.status(500).json({ error: 'Error searching recipes in the database' });
+      return;
+    }
+
+    console.log('Matching recipes from the database:', recipes);
+
+    // Send the matching recipes as a response
+    res.json({ recipes });
+  });
+});
 
 
 module.exports = router;

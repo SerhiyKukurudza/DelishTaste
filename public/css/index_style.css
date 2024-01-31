@@ -4,7 +4,7 @@ nav{
     padding: 0px 0px 0px 0px;
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -51,7 +51,7 @@ nav li:last-child a:hover{
 
 .homeImg {
     position: relative; /* Torna a .containerTest um contexto de posicionamento para os elementos filhos */
-    width: 1200px;
+    width: 1300px;
     height: 500px;
     background-image: url("../images/homeImg.jpeg");
     background-size: cover;
@@ -85,28 +85,51 @@ nav li:last-child a:hover{
     margin: 400px 0px 0px 60px;
 }
 
+.container{
+    max-width: 1300px;
+    display: flex;
+}
+
+.filters{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.buttons{
+    padding: 20px;
+    margin:44px auto;
+}
+
+
+.filter-test{
+    height: 300px;
+
+}
 .jumbotron {
     padding: 4rem 2rem;
-    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-left: 20px;
+    background-color: white;
 }
 
 .card {
-    width: calc(33.33% - 20px); /* Calcule a largura para 3 colunas com algum espaço entre eles */
-    margin-bottom: 20px; /* Adicione algum espaço entre os cards */
-    box-sizing: border-box; /* Certifique-se de que a largura inclua margens e preenchimentos */
+    width: calc(33.33% - 10px); /* Reduz a largura e o espaço entre os cards */
+    margin-bottom: 10px;
+    margin-right: 10px; /* Adiciona algum espaço entre os cards e move-os para a direita */
+    box-sizing: border-box;
 }
 
 .card-image {
-    width: 300px; /* Substitua pelo valor desejado */
-    height: 150px; /* Substitua pelo valor desejado */
+    width: 100%; /* Faz com que a imagem ocupe 100% da largura do card */
+    height: 150px;
 }
-
 
 @media (max-width: 767px) {
     .card {
-        width: calc(50% - 20px); /* Em telas menores, exiba 2 colunas */
+        width: calc(50% - 10px);
     }
 }
+

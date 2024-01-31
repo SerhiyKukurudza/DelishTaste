@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/createRecipePage_style.css" /> <!-- Se necessário, ajuste o caminho do arquivo CSS -->
+</head>
+
+<body>
+  <nav>
+    <img class="logo" src="/images/mainLogo.png" />
+    <ul>
+      <li><a href="/">Home</a></li>
+      {{#user}}
+      <li><a href="/profile">Profile</a></li>
+      {{#isAdmin}}
+      <li><a href="/backEnd">BackEnd</a></li>
+      {{/isAdmin}}
+      <li><a href="/auth/checkData">Check data user</a></li>
+      <li><a href="/auth/logout">Logout</a></li>
+      {{/user}}
+      {{^user}}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/auth/checkData">Check data user</a></li>
+      <li><a href="/signUp">Sign Up</a></li>
+      {{/user}}
+    </ul>
+  </nav>
+
+  <div class="recipe-container">
+    <h2>Create Recipe</h2>
+    <form action="/api/createRecipe" method="post" enctype="multipart/form-data">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="ingredients">Ingredients:</label>
+      <textarea id="ingredients" name="ingredients" required></textarea>
+
+      <label for="preparation">Preparation:</label>
+      <textarea id="preparation" name="preparation" required></textarea>
+
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option  option value="Portuguese Cuisine">Portuguese Cuisine</option>
+        <option value="French Cuisine">French Cuisine</option>
+        <option value="Greek Cuisine">Greek Cuisine</option>
+        <option value="Japanese Cuisine">Japanese Cuisine</option>
+        <!-- Adicione mais categorias conforme necessário -->
+      </select>
+
+      <label for="time">Time (minutes):</label>
+      <input type="number" id="time" name="time" required>
+
+      <label for="price">Price (€):</label>
+      <input type="number" id="price" name="price" step="0.01" required>
+
+      <label for="difficulty">Difficulty:</label>
+      <input type="text" id="difficulty" name="difficulty" required>
+
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+
+      <button type="submit">Create Recipe</button>
+    </form>
+  </div>
+
+  <!-- Seções posteriores do código ... -->
+
+</body>
+
+</html>

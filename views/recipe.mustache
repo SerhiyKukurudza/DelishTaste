@@ -31,25 +31,24 @@
     </ul>
   </nav>
 
-<div class="recipe-container">
-  <div class="recipe-info">
-    <h2 class="recipe-name">{{recipe.title}}</h2>
-    <ul>
-      <li class="recipe-ingredients">Ingredients: </li> {{recipe.ingredients}}
-      <li class="recipe-preparation">Preparation: </li> {{recipe.preparation}}
-      <li class="recipe-category">Category: </li> {{recipe.category}}
-      <li class="recipe-time">Time:</li> {{recipe.time}} minutes
-      <li class="recipe-price">Price: </li> {{recipe.price}}€
-      <li class="recipe-difficulty">Difficulty: </li> {{recipe.difficulty}}
-      <li class="recipe-author"> Author: </li> {{recipe.author}}
-    </ul>
+  <div class="recipe-container">
+    <div class="recipe-info">
+      <h2 class="recipe-name">{{recipe.title}}</h2>
+      <ul>
+        <li class="recipe-ingredients">Ingredients: </li> {{recipe.ingredients}}
+        <li class="recipe-preparation">Preparation: </li> {{recipe.preparation}}
+        <li class="recipe-category">Category: </li> {{recipe.category}}
+        <li class="recipe-time">Time:</li> {{recipe.time}} minutes
+        <li class="recipe-price">Price: </li> {{recipe.price}}€
+        <li class="recipe-difficulty">Difficulty: </li> {{recipe.difficulty}}
+        <li class="recipe-author"> Author: </li> {{recipe.author}}
+      </ul>
+    </div>
+    <img class="recipe-image" src="{{recipe.image}}" alt="{{recipe.title}}" />
   </div>
-  <img class="recipe-image" src="{{recipe.image}}" alt="{{recipe.title}}" />
-</div>
 
-
+  <!-- Seções posteriores do código ... -->
 
 </body>
 
 </html>
-
